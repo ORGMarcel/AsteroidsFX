@@ -1,0 +1,17 @@
+Notes for the project.
+
+Achieving stable interfaces is still a challenge in CBSE because it's difficult to cover a larger basis of principles for further implementation.
+
+For a contract, an interface isn't enough. Pre- and post conditions also need to be defined.
+
+Clean architecture.
+
+Layered component based architecture
+- Improve maintainability
+- Each business component consists of a necessary business object and a DAO for persistence
+- Further partitioning of 3-layered architecture.
+
+Dependency injection and Service locator model are two different ways to code around glue code classes.
+
+
+

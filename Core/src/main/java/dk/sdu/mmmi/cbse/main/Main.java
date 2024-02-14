@@ -135,6 +135,8 @@ public class Main extends Application {
     private Collection<? extends IGamePluginService> getPluginServices() {
         return ServiceLoader.load(IGamePluginService.class).stream().map(ServiceLoader.Provider::get).collect(toList());
     }
+    //Denne collection extender IGamePluginService, hvilket gør at metoden ikke er reliant på modulerne, men i stedet på de interfaces der bliver brugt.
+    //Det er O i solid princippet, Open for extension, closed for modification
 
     private Collection<? extends IEntityProcessingService> getEntityProcessingServices() {
         return ServiceLoader.load(IEntityProcessingService.class).stream().map(ServiceLoader.Provider::get).collect(toList());

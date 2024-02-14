@@ -36,8 +36,4 @@ public class BulletControlSystem implements IEntityProcessingService, BulletSPI 
 
         return bulletentity;
     }
-
-    private void setShape(Entity entity) {
-    }
-
 }

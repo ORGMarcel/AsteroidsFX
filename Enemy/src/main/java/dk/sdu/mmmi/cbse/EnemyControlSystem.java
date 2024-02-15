@@ -8,6 +8,7 @@ import dk.sdu.mmmi.cbse.common.data.World;
 import dk.sdu.mmmi.cbse.common.services.IEntityProcessingService;
 
 import java.util.Collection;
+import java.util.Random;
 import java.util.ServiceLoader;
 
 import static java.util.stream.Collectors.toList;
@@ -18,20 +19,28 @@ public class EnemyControlSystem implements IEntityProcessingService {
     @Override
     public void process(GameData gameData, World world) {
 
+        Random random = new Random();
+        int randomInt;
+        int randomInt2;
+
         for (Entity enemy : world.getEntities(Enemy.class)) {
-            if (gameData.getKeys().isDown(GameKeys.LEFT)) {
-                enemy.setRotation(enemy.getRotation() - 5);
+
+            randomInt = random.nextInt(2);
+            randomInt2 = random.nextInt(10);
+
+            if(randomInt==0) {
+                enemy.setRotation(enemy.getRotation()-5);
             }
-            if (gameData.getKeys().isDown(GameKeys.RIGHT)) {
-                enemy.setRotation(enemy.getRotation() + 5);
+            if(randomInt==1) {
+                enemy.setRotation(enemy.getRotation()+5);
             }
-            if (gameData.getKeys().isDown(GameKeys.UP)) {
+            if (true) {
                 double changeX = Math.cos(Math.toRadians(enemy.getRotation()));
                 double changeY = Math.sin(Math.toRadians(enemy.getRotation()));
                 enemy.setX(enemy.getX() + changeX);
                 enemy.setY(enemy.getY() + changeY);
             }
-            if(gameData.getKeys().isDown(GameKeys.SPACE)) {
+            if(randomInt2 == 1) {
                 getBulletSPIs().stream().findFirst().ifPresent(
                         spi -> {world.addEntity(spi.createBullet(enemy, gameData));}
                 );

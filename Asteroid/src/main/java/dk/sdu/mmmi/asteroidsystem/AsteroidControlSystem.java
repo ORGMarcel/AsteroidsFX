@@ -14,8 +14,7 @@ public class AsteroidControlSystem implements IEntityProcessingService {
     public void process(GameData gameData, World world) {
 
         Random random = new Random();
-        int randomInt;
-        int randomInt2;
+        int randomInt  = random.nextInt(100);
 
         for (Entity asteroid : world.getEntities(Asteroid.class)) {
 
@@ -24,6 +23,9 @@ public class AsteroidControlSystem implements IEntityProcessingService {
                 asteroid.setX(asteroid.getX() + changeX*4);
                 asteroid.setY(asteroid.getY() + changeY*4);
 
+        }
+        if (randomInt ==1) {
+            world.addEntity(AsteroidPlugin.createAsteroid(gameData));
         }
     }
 }

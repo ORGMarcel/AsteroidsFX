@@ -13,5 +13,27 @@ Layered component based architecture
 
 Dependency injection and Service locator model are two different ways to code around glue code classes.
 
+Design pattern, factory pattern.
+
+SOLID principperne.
+
+S - Single responsibility
+O - Open to extension, closed to modification
+L - Liskov Substitution
+I - Interface segregation
+D - Dependency inversion
+
+
+JAR HELL - Multiple versions of the JARs lying on the classpath resulted in ClassLoader loading the first found class form the JAR, with unexpected results.
+
+Split packages, if you were to not utilize moduluar/modulsystem programming
+
+Jigsaw layers
+- Local module system
+- Split packages are prohibited inside one layer
+- Two modules containing the same package have to beling to different layers.
+Jigsaw layers are implemented via classloaders. Each layer has at least one unique classloader. However, classloader constraints are impossible to violate by construction.
+
+
 
 

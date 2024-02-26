@@ -4,6 +4,7 @@ import dk.sdu.mmmi.cbse.common.data.Entity;
 import dk.sdu.mmmi.cbse.common.data.GameData;
 import dk.sdu.mmmi.cbse.common.data.World;
 import dk.sdu.mmmi.cbse.common.services.IGamePluginService;
+import java.util.Random;
 
 public class AsteroidPlugin implements IGamePluginService {
 
@@ -20,12 +21,16 @@ public class AsteroidPlugin implements IGamePluginService {
         world.addEntity(asteroid);
     }
 
-    private Entity createAsteroid(GameData gameData) {
+    public static Entity createAsteroid(GameData gameData) {
 
+        Random randomAsteroidPlacement = new Random();
+        int randomAsteroidInt = randomAsteroidPlacement.nextInt(gameData.getDisplayWidth());
         Entity asteroid = new Asteroid();
         asteroid.setPolygonCoordinates(10, 0, 7, 7, 0, 10, -7, 7, -10, 0, -7, -7, 0, -10, 7, -7);
-        asteroid.setX(gameData.getDisplayHeight() / 3);
-        asteroid.setY(gameData.getDisplayWidth() / 3);
+        asteroid.setX(randomAsteroidInt);
+        asteroid.setY(0);
+        asteroid.setRotation(90);
+
 
         return asteroid;
     }

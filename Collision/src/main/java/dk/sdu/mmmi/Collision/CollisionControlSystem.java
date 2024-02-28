@@ -1,13 +1,27 @@
 package dk.sdu.mmmi.Collision;
+import dk.sdu.mmmi.asteroidsystem.Asteroid;
+import dk.sdu.mmmi.cbse.common.bullet.Bullet;
 import dk.sdu.mmmi.cbse.common.data.Entity;
 import dk.sdu.mmmi.cbse.common.data.GameData;
 import dk.sdu.mmmi.cbse.common.data.World;
 import dk.sdu.mmmi.cbse.common.services.IGamePluginService;
 import dk.sdu.mmmi.cbse.common.services.IEntityProcessingService;
 
+import java.util.Arrays;
+
 public class CollisionControlSystem implements IEntityProcessingService {
     @Override
     public void process(GameData gameData, World world) {
+        for (Entity bullet : world.getEntities(Bullet.class)) {
+            for (Entity asteroid : world.getEntities(Asteroid.class)) {
+                if (entityCollision(bullet, asteroid)){
+                    world.removeEntity(asteroid);
+                    world.removeEntity(bullet);
+                }
+
+            }
+
+        }
 
     }
 
@@ -18,13 +32,18 @@ public class CollisionControlSystem implements IEntityProcessingService {
         double x2 = eAsteroid.getX();
         double y2 = eAsteroid.getY();
 
-        double result = Math.sqrt(((x1-x2)*(x1-x2)) - (y1-y2)*(y1-y2));
+        double result = Math.sqrt(((x1-x2)*(x1-x2)) + (y1-y2)*(y1-y2));
         double[] bulletCoordinates = eBullet.getPolygonCoordinates();
         double[] asteroidCoordinates = eAsteroid.getPolygonCoordinates();
+        double maxBullet = Arrays.stream(bulletCoordinates).max().orElse(-1);
+        double maxAsteroid = Arrays.stream(asteroidCoordinates).max().orElse(-1);
 
 
-        if (result <
-
-        return true;
+        if (result<maxAsteroid+maxBullet) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 }

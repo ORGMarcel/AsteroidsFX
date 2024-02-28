@@ -24,15 +24,20 @@ I - Interface segregation
 D - Dependency inversion
 
 
-JAR HELL - Multiple versions of the JARs lying on the classpath resulted in ClassLoader loading the first found class form the JAR, with unexpected results.
+JAR HELL - Multiple versions of the JARs lying on the classpath resulting in ClassLoader loading the first found class form the JAR, with unexpected results.
 
-Split packages, if you were to not utilize moduluar/modulsystem programming
+Split packages, if you were to not utilize moduluar/modulsystem programming. This is when classes in different modules have the same name.
 
 Jigsaw layers
 - Local module system
 - Split packages are prohibited inside one layer
 - Two modules containing the same package have to beling to different layers.
 Jigsaw layers are implemented via classloaders. Each layer has at least one unique classloader. However, classloader constraints are impossible to violate by construction.
+
+
+JPMS
+
+Java Platform Module system
 
 
 

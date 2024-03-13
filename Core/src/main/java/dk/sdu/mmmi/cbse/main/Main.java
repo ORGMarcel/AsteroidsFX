@@ -112,12 +112,24 @@ public class Main extends Application {
         for (IEntityProcessingService entityProcessorService : getEntityProcessingServices()) {
             entityProcessorService.process(gameData, world);
         }
-//        for (IPostEntityProcessingService postEntityProcessorService : getPostEntityProcessingServices()) {
+
+
+//       for (IPostEntityProcessingService postEntityProcessorService : getPostEntityProcessingServices()) {
 //            postEntityProcessorService.process(gameData, world);
 //        }
     }
 
     private void draw() {
+
+        for (Entity polygonEntity : polygons.keySet()) {
+            if(!world.getEntities().contains(polygonEntity)){
+                Polygon removedPolygon = polygons.get(polygonEntity);
+                polygons.remove(polygonEntity);
+                gameWindow.getChildren().remove(removedPolygon);
+            }
+        }
+
+
         for (Entity entity : world.getEntities()) {
             Polygon polygon = polygons.get(entity);
             if (polygon == null) {

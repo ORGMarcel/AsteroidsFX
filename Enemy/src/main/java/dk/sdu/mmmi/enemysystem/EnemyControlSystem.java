@@ -46,19 +46,19 @@ public class EnemyControlSystem implements IEntityProcessingService {
             }
 
             if (enemy.getX() < 0) {
-                enemy.setX(1);
+                enemy.setRotation(enemy.getRotation()+180);
             }
 
             if (enemy.getX() > gameData.getDisplayWidth()) {
-                enemy.setX(gameData.getDisplayWidth()-1);
+                enemy.setRotation(enemy.getRotation()+180);
             }
 
             if (enemy.getY() < 0) {
-                enemy.setY(1);
+                enemy.setRotation(enemy.getRotation()+180);
             }
 
             if (enemy.getY() > gameData.getDisplayHeight()) {
-                enemy.setY(gameData.getDisplayHeight()-1);
+                enemy.setRotation(enemy.getRotation()+180);
             }
 
 

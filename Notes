@@ -25,6 +25,8 @@ D - Dependency inversion
 
 
 JAR HELL - Multiple versions of the JARs lying on the classpath resulting in ClassLoader loading the first found class form the JAR, with unexpected results.
+How to solve Jar hell: Prohibit having two modules containing classes with the same name,
+
 
 Split packages, if you were to not utilize moduluar/modulsystem programming. This is when classes in different modules have the same name.
 
@@ -35,9 +37,20 @@ Jigsaw layers
 Jigsaw layers are implemented via classloaders. Each layer has at least one unique classloader. However, classloader constraints are impossible to violate by construction.
 
 
-JPMS
+JPMS = Java Platform Module system
 
-Java Platform Module system
+To avoid split packages, each module is loaded by its own classloader. This means there'll no conflicts between classes in different modules.
+
+getClassloader()==null
+
+Inversion of control, IOC is a design principle that allows dependencies to be transferred through services.
+
+Service provided interfaces, the interfaces only have one responsibility.
+
+Modularity provides: Smaller footprint, better encapsulation, follows SOLID principles and separation of concerns.
+Some of the same principles of microservices.
+
+
 
 
 

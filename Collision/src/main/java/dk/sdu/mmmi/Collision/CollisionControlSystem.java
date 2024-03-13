@@ -15,7 +15,10 @@ public class CollisionControlSystem implements IEntityProcessingService {
         for (Entity bullet : world.getEntities(Bullet.class)) {
             for (Entity asteroid : world.getEntities(Asteroid.class)) {
                 if (entityCollision(bullet, asteroid)){
-                    world.removeEntity(asteroid);
+                    asteroid.setHitPoints(asteroid.getHitPoints()-1);
+                    if (asteroid.getHitPoints()<1) {
+                        world.removeEntity(asteroid);
+                    }
                     world.removeEntity(bullet);
                 }
 

@@ -20,6 +20,22 @@ public class BulletControlSystem implements IEntityProcessingService, BulletSPI 
             bullet.setX(bullet.getX() + changeX*4);
             bullet.setY(bullet.getY() + changeY*4);
 
+            if (bullet.getX() < 0) {
+                world.removeEntity(bullet);
+            }
+
+            if (bullet.getX() > gameData.getDisplayWidth()) {
+                world.removeEntity(bullet);
+            }
+
+            if (bullet.getY() < 0) {
+                world.removeEntity(bullet);
+            }
+
+            if (bullet.getY() > gameData.getDisplayHeight()) {
+                world.removeEntity(bullet);
+            }
+
 
 
         }

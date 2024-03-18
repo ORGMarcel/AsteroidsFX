@@ -6,5 +6,6 @@ module Collision {
     requires Common;
     requires Asteroid;
     requires CommonBullet;
+    requires Player;
     provides  IEntityProcessingService with CollisionControlSystem;
 }

@@ -54,7 +54,7 @@ public class Entity implements Serializable {
         return rotation;
     }
 
-    public void setHitPoints(int hitPoints) { this.hP = hP;}
+    public void setHitPoints(int hitPoints) { this.hP = hitPoints;}
 
     public int getHitPoints() {return hP; }
 

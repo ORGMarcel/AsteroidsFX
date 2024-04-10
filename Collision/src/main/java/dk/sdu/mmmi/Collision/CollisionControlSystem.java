@@ -41,7 +41,7 @@ public class CollisionControlSystem implements IEntityProcessingService {
     }
 
 
-    private boolean entityCollision(Entity eBullet, Entity eAsteroid) {
+    public boolean entityCollision(Entity eBullet, Entity eAsteroid) {
 
         double x1 = eBullet.getX();
         double y1 = eBullet.getY();

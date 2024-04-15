@@ -1,12 +1,10 @@
 package dk.sdu.mmmi.Collision;
-import dk.sdu.mmmi.asteroidsystem.Asteroid;
+import dk.sdu.mmmi.cbse.HelloWorld;
 import dk.sdu.mmmi.cbse.common.bullet.Bullet;
 import dk.sdu.mmmi.cbse.common.data.Entity;
 import dk.sdu.mmmi.cbse.common.data.GameData;
 import dk.sdu.mmmi.cbse.common.data.World;
-import dk.sdu.mmmi.cbse.common.services.IGamePluginService;
 import dk.sdu.mmmi.cbse.common.services.IEntityProcessingService;
-import dk.sdu.mmmi.cbse.playersystem.Player;
 
 import java.util.Arrays;
 
@@ -14,7 +12,7 @@ public class CollisionControlSystem implements IEntityProcessingService {
     @Override
     public void process(GameData gameData, World world) {
         for (Entity bullet : world.getEntities(Bullet.class)) {
-            for (Entity asteroid : world.getEntities(Asteroid.class)) {
+            for (Entity asteroid : world.getEntities(HelloWorld.class)) {
                 if (entityCollision(bullet, asteroid)) {
                     System.out.println(asteroid.getHitPoints());
                     asteroid.setHitPoints(asteroid.getHitPoints() - 1);
@@ -29,8 +27,8 @@ public class CollisionControlSystem implements IEntityProcessingService {
             }
 
         }
-        for (Entity player : world.getEntities(Player.class)) {
-            for (Entity asteroid : world.getEntities(Asteroid.class)) {
+        for (Entity player : world.getEntities(HelloWorld.class)) {
+            for (Entity asteroid : world.getEntities(HelloWorld.class)) {
                 if (entityCollision(player, asteroid)) {
                     world.removeEntity(player);
                     world.removeEntity(asteroid);

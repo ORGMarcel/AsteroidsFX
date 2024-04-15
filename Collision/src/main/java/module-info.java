@@ -6,6 +6,5 @@ module Collision {
     requires Common;
     requires Asteroid;
     requires CommonBullet;
-    requires Player;
-    provides  IEntityProcessingService with CollisionControlSystem;
+    provides  IEntityProcessingService with dk.sdu.mmmi.Collision.CollisionControlSystem;
 }

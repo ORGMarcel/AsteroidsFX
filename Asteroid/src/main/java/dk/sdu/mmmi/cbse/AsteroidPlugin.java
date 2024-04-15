@@ -1,4 +1,4 @@
-package dk.sdu.mmmi.asteroidsystem;
+package dk.sdu.mmmi.cbse;
 
 import dk.sdu.mmmi.cbse.common.data.Entity;
 import dk.sdu.mmmi.cbse.common.data.GameData;
@@ -25,7 +25,7 @@ public class AsteroidPlugin implements IGamePluginService {
 
         Random randomAsteroidPlacement = new Random();
         int randomAsteroidInt = randomAsteroidPlacement.nextInt(gameData.getDisplayWidth());
-        Entity asteroid = new Asteroid();
+        Entity asteroid = new HelloWorld();
         asteroid.setPolygonCoordinates(10, 0, 7, 7, 0, 10, -7, 7, -10, 0, -7, -7, 0, -10, 7, -7);
         asteroid.setX(randomAsteroidInt);
         asteroid.setY(0);

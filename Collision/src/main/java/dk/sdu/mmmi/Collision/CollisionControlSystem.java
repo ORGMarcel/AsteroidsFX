@@ -11,17 +11,17 @@ import java.util.Arrays;
 public class CollisionControlSystem implements IEntityProcessingService {
     @Override
     public void process(GameData gameData, World world) {
-        for (Entity bullet : world.getEntities(Bullet.class)) {
-            for (Entity asteroid : world.getEntities(HelloWorld.class)) {
-                if (entityCollision(bullet, asteroid)) {
-                    System.out.println(asteroid.getHitPoints());
-                    asteroid.setHitPoints(asteroid.getHitPoints() - 1);
-                    System.out.println(asteroid.getHitPoints());
+        for (Entity entity1 : world.getEntities()) {
+            for (Entity entity2 : world.getEntities()) {
+                if (entityCollision(entity1, entity2)) {
+                    System.out.println(entity2.getHitPoints());
+                    entity2.setHitPoints(entity2.getHitPoints() - 1);
+                    System.out.println(entity2.getHitPoints());
 
-                    if (asteroid.getHitPoints() < 1) {
-                        world.removeEntity(asteroid);
+                    if (entity2.getHitPoints() < 1) {
+                        world.removeEntity(entity2);
                     }
-                    world.removeEntity(bullet);
+                    world.removeEntity(entity1);
                 }
 
             }

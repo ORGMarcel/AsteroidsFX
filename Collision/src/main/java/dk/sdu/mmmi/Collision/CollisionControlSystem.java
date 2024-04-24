@@ -13,7 +13,7 @@ public class CollisionControlSystem implements IEntityProcessingService {
     public void process(GameData gameData, World world) {
         for (Entity entity1 : world.getEntities()) {
             for (Entity entity2 : world.getEntities()) {
-                if (entityCollision(entity1, entity2)) {
+                if (entityCollision(entity1, entity2) && entity1.getClass() != entity2.getClass()) {
                     System.out.println(entity2.getHitPoints());
                     entity2.setHitPoints(entity2.getHitPoints() - 1);
                     System.out.println(entity2.getHitPoints());
@@ -27,15 +27,15 @@ public class CollisionControlSystem implements IEntityProcessingService {
             }
 
         }
-        for (Entity player : world.getEntities(HelloWorld.class)) {
-            for (Entity asteroid : world.getEntities(HelloWorld.class)) {
-                if (entityCollision(player, asteroid)) {
-                    world.removeEntity(player);
-                    world.removeEntity(asteroid);
+        //for (Entity player : world.getEntities(HelloWorld.class)) {
+          //  for (Entity asteroid : world.getEntities(HelloWorld.class)) {
+            //    if (entityCollision(player, asteroid)) {
+              //      world.removeEntity(player);
+                //    world.removeEntity(asteroid);
 
-                }
-            }
-        }
+                //}
+            //}
+        //}
     }
 
 

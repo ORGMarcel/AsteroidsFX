@@ -1,16 +1,20 @@
 package dk.sdu.mmmi.Collision;
-import dk.sdu.mmmi.asteroidsystem.Asteroid;
+import dk.sdu.mmmi.asteroid.Asteroid;
 import dk.sdu.mmmi.cbse.common.bullet.Bullet;
 import dk.sdu.mmmi.cbse.common.data.Entity;
 import dk.sdu.mmmi.cbse.common.data.GameData;
 import dk.sdu.mmmi.cbse.common.data.World;
-import dk.sdu.mmmi.cbse.common.services.IGamePluginService;
 import dk.sdu.mmmi.cbse.common.services.IEntityProcessingService;
-import dk.sdu.mmmi.cbse.playersystem.Player;
+import dk.sdu.mmmi.player.Player;
+
+
 
 import java.util.Arrays;
 
 public class CollisionControlSystem implements IEntityProcessingService {
+
+    //Try removing [classname].class and set if loop to check entities instead of checking entities in the specific class.
+    //While checking entites maybe do instanceof some interface, to check whether they should loose hp.
     @Override
     public void process(GameData gameData, World world) {
         for (Entity bullet : world.getEntities(Bullet.class)) {

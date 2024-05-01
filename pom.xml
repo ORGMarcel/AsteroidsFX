@@ -22,6 +22,7 @@
         <module>CommonAsteroids</module>
         <module>CommonPlayer</module>
         <module>CommonEnemy</module>
+        <module>ScoringSystem</module>
     </modules>
     <properties>
         <java>java</java>

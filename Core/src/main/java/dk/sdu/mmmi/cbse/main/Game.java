@@ -11,11 +11,14 @@ import dk.sdu.mmmi.cbse.common.data.World;
 import dk.sdu.mmmi.cbse.common.services.IEntityProcessingService;
 import dk.sdu.mmmi.cbse.common.services.IGamePluginService;
 import dk.sdu.mmmi.cbse.common.services.IPostEntityProcessingService;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.Pane;
@@ -39,10 +42,18 @@ class Game {
         this.postEntityProcessingServices = postEntityProcessingServices;
     }
 
+    private List<Text> addLabels(List<String> labels) {
+        List<Text> textBoxes = new ArrayList<>();
+        for (int i = 0; i < labels.size(); i++) {
+            textBoxes.add(new Text(10, 20 + i * 20, labels.get(i)));
+        }
+        return textBoxes;
+    }
+
     public void start(Stage window) throws Exception {
-        Text text = new Text(10, 20, "Destroyed asteroids: 0");
+        //Text text = new Text(10, 20, "Destroyed asteroids: 0");
         gameWindow.setPrefSize(gameData.getDisplayWidth(), gameData.getDisplayHeight());
-        gameWindow.getChildren().add(text);
+        //gameWindow.getChildren().add(text);
 
         Scene scene = new Scene(gameWindow);
         scene.setOnKeyPressed(event -> {
@@ -108,6 +119,10 @@ class Game {
         for (IPostEntityProcessingService postEntityProcessorService : getPostEntityProcessingServices()) {
             postEntityProcessorService.process(gameData, world);
         }
+        List<Node> nodesToRemove = new ArrayList<>(gameWindow.getChildren().filtered(node -> node instanceof Text));
+        gameWindow.getChildren().removeAll(nodesToRemove);
+//        gameWindow.getChildren().filtered(node -> node instanceof Text).forEach(node -> gameWindow.getChildren().remove(node));
+        gameWindow.getChildren().addAll(addLabels(gameData.getLabels()));
     }
 
     private void draw() {

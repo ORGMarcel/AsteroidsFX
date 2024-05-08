@@ -9,6 +9,7 @@ module Asteroid {
     requires Common;
     requires Enemy;
     requires CommonAsteroids;
+    requires java.net.http;
     provides  IGamePluginService with AsteroidPlugin;
     provides  IEntityProcessingService with AsteroidControlSystem;
 }

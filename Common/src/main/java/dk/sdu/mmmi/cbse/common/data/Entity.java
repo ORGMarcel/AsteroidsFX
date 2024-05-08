@@ -1,6 +1,7 @@
 package dk.sdu.mmmi.cbse.common.data;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.UUID;
 
 public class Entity implements Serializable {
@@ -57,6 +58,8 @@ public class Entity implements Serializable {
     public void setHitPoints(int hitPoints) { this.hP = hitPoints;}
 
     public int getHitPoints() {return hP; }
+
+    private List<String> labels;
 
         
 

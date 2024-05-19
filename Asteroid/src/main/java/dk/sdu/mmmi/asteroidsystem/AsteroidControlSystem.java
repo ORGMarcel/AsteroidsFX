@@ -4,7 +4,7 @@ import dk.sdu.mmmi.cbse.common.data.Entity;
 import dk.sdu.mmmi.cbse.common.data.GameData;
 import dk.sdu.mmmi.cbse.common.data.World;
 import dk.sdu.mmmi.cbse.common.services.IEntityProcessingService;
-import dk.sdu.mmmi.asteroid.Asteroid;
+import dk.sdu.mmmi.asteroid.CommonAsteroid;
 
 import java.util.Random;
 
@@ -16,7 +16,7 @@ public class AsteroidControlSystem implements IEntityProcessingService {
         Random random = new Random();
         int randomInt  = random.nextInt(100);
 
-        for (Entity asteroid : world.getEntities(Asteroid.class)) {
+        for (Entity asteroid : world.getEntities(CommonAsteroid.class)) {
 
                 double changeX = Math.cos(Math.toRadians(asteroid.getRotation()));
                 double changeY = Math.sin(Math.toRadians(asteroid.getRotation()));
@@ -25,7 +25,7 @@ public class AsteroidControlSystem implements IEntityProcessingService {
 
                 if (asteroid.getHitPoints()==7){
 
-                    Entity asteroidSmall = new Asteroid();
+                    Entity asteroidSmall = new CommonAsteroid();
                     asteroidSmall.setPolygonCoordinates(-10, 0, -7, -7, 0, -10, 7, -7);
                     asteroidSmall.setX(asteroid.getX());
                     asteroidSmall.setY(asteroid.getY());
@@ -33,7 +33,7 @@ public class AsteroidControlSystem implements IEntityProcessingService {
                     asteroidSmall.setHitPoints(6);
                     world.addEntity(asteroidSmall);
 
-                    Entity asteroidSmall1 = new Asteroid();
+                    Entity asteroidSmall1 = new CommonAsteroid();
                     asteroidSmall1.setPolygonCoordinates(-10, 0, -7, -7, 0, -10, 7, -7);
                     asteroidSmall1.setX(asteroid.getX());
                     asteroidSmall1.setY(asteroid.getY());
@@ -45,7 +45,7 @@ public class AsteroidControlSystem implements IEntityProcessingService {
                 }
 
                 if (asteroid.getHitPoints()==3) {
-                    Entity asteroidSmallest = new Asteroid();
+                    Entity asteroidSmallest = new CommonAsteroid();
                     asteroidSmallest.setPolygonCoordinates(-5, 0, -3, -4, 0, -8, 3, -2);
                     asteroidSmallest.setX(asteroid.getX());
                     asteroidSmallest.setY(asteroid.getY());
@@ -53,7 +53,7 @@ public class AsteroidControlSystem implements IEntityProcessingService {
                     asteroidSmallest.setHitPoints(2);
                     world.addEntity(asteroidSmallest);
 
-                    Entity asteroidSmallest1 = new Asteroid();
+                    Entity asteroidSmallest1 = new CommonAsteroid();
                     asteroidSmallest1.setPolygonCoordinates(-5, 0, -3, -4, 0, -8, 3, -2);
                     asteroidSmallest1.setX(asteroid.getX());
                     asteroidSmallest1.setY(asteroid.getY());

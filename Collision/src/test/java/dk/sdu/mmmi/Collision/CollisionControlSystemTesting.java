@@ -1,4 +1,5 @@
 package dk.sdu.mmmi.Collision;
+import dk.sdu.mmmi.cbse.common.services.IEntityProcessingService;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -52,8 +53,15 @@ class CollisionControlSystemTesting {
             assertFalse(collisionControlSystem.entityCollision(asteroid, bullet));
         }
 
-
-
+    @Test
+    public void testCollisionImplementsInterface() {
+        CollisionControlSystem collisionControlSystem = new CollisionControlSystem();
+        assertSame(collisionControlSystem.getClass().getInterfaces()[0], IEntityProcessingService.class,
+                "CollisionControlSystem should implement the interface IEntityProcessingService");
     }
+}
+
+
+
 
 

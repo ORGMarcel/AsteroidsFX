@@ -34,4 +34,5 @@ class EnemyControlSystemTest {
         assertNotEquals(initialX, enemy.getX());
         assertNotEquals(initialY, enemy.getY());
     }
+
 }

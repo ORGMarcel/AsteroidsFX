@@ -1,6 +1,6 @@
 package dk.sdu.mmmi.Collision;
-import dk.sdu.mmmi.asteroid.Asteroid;
-import dk.sdu.mmmi.cbse.common.bullet.Bullet;
+import dk.sdu.mmmi.asteroid.CommonAsteroid;
+import dk.sdu.mmmi.cbse.common.bullet.CommonBullet;
 import dk.sdu.mmmi.cbse.common.data.Entity;
 import dk.sdu.mmmi.cbse.common.data.GameData;
 import dk.sdu.mmmi.cbse.common.data.World;
@@ -17,8 +17,8 @@ public class CollisionControlSystem implements IEntityProcessingService {
     //While checking entites maybe do instanceof some interface, to check whether they should loose hp.
     @Override
     public void process(GameData gameData, World world) {
-        for (Entity bullet : world.getEntities(Bullet.class)) {
-            for (Entity asteroid : world.getEntities(Asteroid.class)) {
+        for (Entity bullet : world.getEntities(CommonBullet.class)) {
+            for (Entity asteroid : world.getEntities(CommonAsteroid.class)) {
                 if (entityCollision(bullet, asteroid)) {
                     System.out.println(asteroid.getHitPoints());
                     asteroid.setHitPoints(asteroid.getHitPoints() - 1);
@@ -34,7 +34,7 @@ public class CollisionControlSystem implements IEntityProcessingService {
 
         }
         for (Entity player : world.getEntities(Player.class)) {
-            for (Entity asteroid : world.getEntities(Asteroid.class)) {
+            for (Entity asteroid : world.getEntities(CommonAsteroid.class)) {
                 if (entityCollision(player, asteroid)) {
                     world.removeEntity(player);
                     world.removeEntity(asteroid);

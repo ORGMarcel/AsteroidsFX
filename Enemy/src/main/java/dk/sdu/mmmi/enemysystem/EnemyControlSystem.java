@@ -5,7 +5,7 @@ import dk.sdu.mmmi.cbse.common.data.Entity;
 import dk.sdu.mmmi.cbse.common.data.GameData;
 import dk.sdu.mmmi.cbse.common.data.World;
 import dk.sdu.mmmi.cbse.common.services.IEntityProcessingService;
-import dk.sdu.mmmi.commonenemy.Enemy;
+import dk.sdu.mmmi.commonenemy.CommonEnemy;
 
 import java.util.Collection;
 import java.util.Random;
@@ -23,7 +23,7 @@ public class EnemyControlSystem implements IEntityProcessingService {
         int randomInt;
         int randomInt2;
 
-        for (Entity enemy : world.getEntities(Enemy.class)) {
+        for (Entity enemy : world.getEntities(CommonEnemy.class)) {
 
             randomInt = random.nextInt(2);
             randomInt2 = random.nextInt(10);
